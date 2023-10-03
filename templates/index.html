@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist app</title>
+</head>
+<body>
+    <h1>TODO LIST</h1>
+    <ul>
+        {% for todo in todos %}
+        <li>
+        <input type="checkbox" name="done" {% if todo['done'] %} checked {%endif%} onchange="this.form.submit()">
+        {{todo['todo']}}
+        </li>
+        {% endfor %}
+    </ul>
+       <form action="{{url_for('add')}}" method="post">
+             <input type="text" name="todo">
+             <button type="submit" name="submit">Add todo</button>
+       </form>
+</body>
+</html>
